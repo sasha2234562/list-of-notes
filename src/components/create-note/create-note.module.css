@@ -1,0 +1,10 @@
+.containerCreateNote {
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+}
+
+.containerCreateNote input {
+    width: 75%;
+    min-height: 32px
+}

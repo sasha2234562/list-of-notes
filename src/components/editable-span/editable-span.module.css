@@ -1,0 +1,12 @@
+.editableSpanContainer {
+    display: flex;
+    justify-content: center
+}
+.editableSpanContainer input{
+    width: 90vh;
+}
+
+.editableSpan {
+    text-align: center;
+    font-size: 26px
+}

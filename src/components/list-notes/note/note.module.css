@@ -1,0 +1,9 @@
+.containerNote {
+    display: flex;
+    justify-content: space-between;
+    font-size: 26px;
+}
+
+.containerNote input {
+    width: 85vh;
+}

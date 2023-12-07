@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {useSelector} from "react-redux";
+import {Notes} from "./components/list-notes/notes";
+import React, {useState} from "react";
+import {AddNewList} from "./components/addNewList/add-new-list";
+import i from "./images/png-transparent-content-creator-thumbnail.png"
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const state = useSelector(state => state)
+  const [create, setCreate] = useState(false)
+
+    return (
+        <div className="App">
+            {!create
+                ?<div><img src={i} style={{width: "5%"}} onClick={()=> {
+                    setCreate(true)
+                }}/> Create new list</div>
+            :<AddNewList create={setCreate}/>}
+            <div className={"content"}>
+                {state.notes.map(n => {
+                    // debugger
+                    return <Notes key={n.listId} notes={n}/>
+                })}
+            </div>
+        </div>
+    );
 }
 
 export default App;
