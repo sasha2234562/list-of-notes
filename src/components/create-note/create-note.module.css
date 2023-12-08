@@ -4,7 +4,11 @@
     margin: 5% 0;
 }
 
-.containerCreateNote input {
+.textFielD {
     width: 75%;
     min-height: 32px
+}
+.error{
+    color: red;
+    font-size: 21px;
 }
