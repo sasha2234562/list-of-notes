@@ -7,3 +7,10 @@
 .containerNote input {
     width: 85vh;
 }
+.tags{
+    font-size: 21px;
+    font-family: Impact, fantasy;
+}
+.tags div{
+    color: #818080;
+}

@@ -15,9 +15,10 @@ export const EditableSpan = (props) => {
     return (
         <div className={e.editableSpanContainer}>
             {!update
-                ?<h3 style={{textAlign: "center", fontSize: "26px"}} onDoubleClick={() => setUpdate(true)}>{props.listName}</h3>
-            : <TextField autoFocus id="standard-basic" variant="standard" value={value}
-                         onChange={changeHandler} onBlur={() => {
+                ? <h3
+                      onDoubleClick={() => setUpdate(true)}>{props.listName}</h3>
+                : <TextField autoFocus id="standard-basic" variant="standard" value={value}
+                             onChange={changeHandler} onBlur={() => {
                     setUpdate(false)
                     dispatch(updateListName(value, props.listId))
                 }}/>

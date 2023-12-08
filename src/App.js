@@ -17,7 +17,6 @@ function App() {
             :<AddNewList create={setCreate}/>}
             <div className={"content"}>
                 {state.notes.map(n => {
-                    // debugger
                     return <Notes key={n.listId} notes={n}/>
                 })}
             </div>

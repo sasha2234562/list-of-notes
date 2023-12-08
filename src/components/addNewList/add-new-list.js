@@ -11,12 +11,13 @@ export const AddNewList = (props) => {
         setValueList(e.currentTarget.value)
     }
     const addListHandler = () => {
+        debugger
         dispatch(addList(valueList))
         props.create(false)
     }
 
     return (
-        <div className={a.addList} onBlur={()=> props.create(false)}>
+        <div className={a.addList}>
             <TextField value={valueList}
                        onChange={onChangeHandler}
                        label="Add new list"

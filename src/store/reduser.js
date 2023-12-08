@@ -5,16 +5,17 @@ const initialState = [
         listName: "What to learn",
         listId: v1(),
         notes: [
-            {id: v1(), important: true, title: "Good"},
-            {id: v1(), important: false, title: "Go#od"},
-            {id: v1(), important: true, title: "Good"},
-            {id: v1(), important: false, title: "Good#"},
+            {id: v1(), important: true, title: "Good", tags: []},
+            {id: v1(), important: false, title: "Go#od", tags: []},
+            {id: v1(), important: true, title: "Good", tags: []},
+            {id: v1(), important: false, title: "Good#", tags: []},
         ]
     }
 ]
 export const notesReduser = (state = initialState, action) => {
     switch (action.type) {
         case "add-list": {
+            debugger
             return [{
                 listName: action.title,
                 listId: v1(),
@@ -24,13 +25,13 @@ export const notesReduser = (state = initialState, action) => {
         case "add-note": {
             return state.map(l => l.listId === action.listId ? {
                 ...l,
-                notes: [{id: v1(), important: false, title: action.title}, ...l.notes]
+                notes: [{id: v1(), important: false, title: action.title, tags: action.tags}, ...l.notes]
             } : l)
         }
         case "update-note": {
             return state.map(l => l.listId === action.listId ? {
                 ...l,
-                notes: l.notes.map(n => n.id === action.noteId ? {...n, title: action.newTitle} : n)
+                notes: l.notes.map(n => n.id === action.noteId ? {...n, title: action.newTitle, tags: action.tags} : n)
             } : l)
         }
         case "delete-note": {
@@ -45,7 +46,7 @@ export const notesReduser = (state = initialState, action) => {
         case "pick-out-note": {
             return state.map(l => l.listId === action.listId ? {
                 ...l,
-                notes: l.notes.map(n => n.id === action.noteId ? {...n, important : !n.important}: n)
+                notes: l.notes.map(n => n.id === action.noteId ? {...n, important: !n.important} : n)
             } : l)
         }
         default:
@@ -54,7 +55,7 @@ export const notesReduser = (state = initialState, action) => {
 }
 export const pickOutNote = (listId, noteId, important) => ({type: "pick-out-note", listId, noteId, important})
 export const addList = (title) => ({type: "add-list", title})
-export const addNote = (title, listId) => ({type: "add-note", title, listId})
-export const updateNote = (newTitle, listId, noteId) => ({type: "update-note", newTitle, listId, noteId})
+export const addNote = (title, listId, tags) => ({type: "add-note", title, listId, tags})
+export const updateNote = (newTitle, listId, noteId,tags) => ({type: "update-note", newTitle, listId, noteId,tags})
 export const updateListName = (newListName, listId) => ({type: "update-list-name", newListName, listId})
 export const deleteNote = (listId, idNote) => ({type: "delete-note", listId, idNote})
